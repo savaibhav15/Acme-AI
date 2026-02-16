@@ -21,7 +21,7 @@ The agent must support:
 
 ```
 ┌─────────────────────────────────────┐
-│     Tools Layer (tools.py)          │  ← LangGraph Tools
+│     Tools Layer (tools.py)          │  ← Tool Definitions
 ├─────────────────────────────────────┤
 │   Service Layer (services/)         │  ← Business Logic
 ├─────────────────────────────────────┤
@@ -468,6 +468,7 @@ This architecture supports future enhancements:
 - Remained monolithic rather than splitting into microservices
 
 The design attempts to balance practical constraints with maintainability for a small-scale booking system.
+
 
 
 

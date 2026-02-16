@@ -347,7 +347,7 @@ def operation(params):
 - Search fails → Return general clinic information
 
 **Why Not Fail Fast**:
-- Calendly API documented as potentially unreliable
+- External APIs can experience downtime or rate limiting
 - Better UX to provide degraded service than no service
 - Fallbacks maintain core functionality
 
@@ -451,13 +451,22 @@ This architecture supports future enhancements:
 
 ---
 
-## Conclusion
+## Summary
 
-This architecture balances pragmatism with engineering rigor:
+**Architecture**: Four-layer separation (Tools, Services, API, Utilities)
 
-- **Appropriate Abstraction**: Layers where they add value, not for ceremony
-- **Production Ready**: Handles failures gracefully, validates inputs, tested thoroughly
-- **Maintainable**: Clear boundaries, focused responsibilities, consistent patterns
-- **Extensible**: Easy to add features without breaking existing functionality
+**Key Characteristics**:
+- Layers tested independently with mocked dependencies
+- Input validation before external API calls
+- Fallback behavior when API unavailable
+- Services decoupled from LangChain specifics
 
-The design prioritizes **operational reliability** over theoretical purity, making practical trade-offs appropriate for the problem domain while maintaining clean architecture principles.
+**Trade-offs Made**:
+- Added ~30% more files for better testability
+- Chose dependency injection over simpler constructors
+- Implemented validation despite minor performance overhead
+- Remained monolithic rather than splitting into microservices
+
+The design attempts to balance practical constraints with maintainability for a small-scale booking system.
+
+
